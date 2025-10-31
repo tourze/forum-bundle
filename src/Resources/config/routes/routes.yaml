@@ -1,0 +1,5 @@
+# ForumBundle Routes
+controllers:
+    resource: ../../Controller/
+    type: attribute
+    prefix: /admin

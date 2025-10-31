@@ -1,0 +1,39 @@
+services:
+  # default configuration for services in *this* file
+  _defaults:
+    autowire: true      # Automatically injects dependencies in your services.
+    autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+    public: true
+
+  # Commands
+  ForumBundle\Command\:
+    resource: '../../Command/'
+
+  # Controller
+  ForumBundle\Controller\:
+    resource: '../../Controller/'
+
+  # EntityListener
+  ForumBundle\EntityListener\:
+    resource: '../../EntityListener/'
+
+  # EventSubscriber
+  ForumBundle\EventSubscriber\:
+    resource: '../../EventSubscriber/'
+
+  # MessageHandler
+  ForumBundle\MessageHandler\:
+    resource: '../../MessageHandler/'
+    tags: ['messenger.message_handler']
+
+  # Repository
+  ForumBundle\Repository\:
+    resource: '../../Repository/'
+
+  # Service
+  ForumBundle\Service\:
+    resource: '../../Service/'
+
+  # Util
+  ForumBundle\Util\:
+    resource: '../../Util/'
