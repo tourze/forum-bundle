@@ -57,7 +57,7 @@
     "tourze/lock-service-bundle": "1.0.*",
     "tourze/sensitive-text-detect-bundle": "0.0.*",
     "tourze/symfony-aop-async-bundle": "0.0.*",
-    "tourze/symfony-aop-bundle": "~0.0.4",
+    "tourze/symfony-aop-bundle": "1.0.*",
     "tourze/symfony-cron-job-bundle": "1.0.*",
     "tourze/symfony-ecol-bundle": "1.0.*",
     "tourze/symfony-lock-command-bundle": "1.0.*",
