@@ -12,6 +12,7 @@ use Tourze\CatalogBundle\CatalogBundle;
 use Tourze\DoctrineEntityLockBundle\DoctrineEntityLockBundle;
 use Tourze\DoctrineIndexedBundle\DoctrineIndexedBundle;
 use Tourze\DoctrineTimestampBundle\DoctrineTimestampBundle;
+use Tourze\EasyAdminMenuBundle\EasyAdminMenuBundle;
 use Tourze\EcolBundle\EcolBundle;
 use Tourze\RoutingAutoLoaderBundle\RoutingAutoLoaderBundle;
 use Tourze\SensitiveTextDetectBundle\SensitiveTextDetectBundle;
@@ -36,6 +37,7 @@ class ForumBundle extends Bundle implements BundleDependencyInterface
             RoutingAutoLoaderBundle::class => ['all' => true],
             SensitiveTextDetectBundle::class => ['all' => true],
             UserFollowBundle::class => ['all' => true],
+            EasyAdminMenuBundle::class => ['all' => true],
         ];
     }
 }
