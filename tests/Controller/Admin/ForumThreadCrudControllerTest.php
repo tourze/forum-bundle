@@ -75,10 +75,10 @@ final class ForumThreadCrudControllerTest extends AbstractEasyAdminControllerTes
     {
         yield 'id' => ['ID'];
         yield 'title' => ['标题'];
-        yield 'content' => ['内容'];
-        yield 'status' => ['状态'];
-        yield 'type' => ['类型'];
-        yield 'author' => ['作者'];
+        yield 'user' => ['发布用户'];
+        yield 'status' => ['审核状态'];
+        yield 'type' => ['帖子类型'];
+        yield 'cover_picture' => ['封面图'];
         yield 'created_at' => ['创建时间'];
     }
 

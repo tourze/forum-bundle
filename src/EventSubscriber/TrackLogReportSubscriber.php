@@ -46,7 +46,7 @@ class TrackLogReportSubscriber
         if (method_exists($user, 'getId')) {
             $userId = $user->getId();
             $threadId = $params['threadId'] ?? null;
-            if (is_string($userId) && is_string($threadId) && $userId !== '' && $threadId !== '') {
+            if (is_string($userId) && is_string($threadId) && '' !== $userId && '' !== $threadId) {
                 $this->saveShareRecordService->save($userId, 'thread', $threadId);
             }
         }

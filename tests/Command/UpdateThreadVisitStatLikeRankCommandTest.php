@@ -27,7 +27,7 @@ final class UpdateThreadVisitStatLikeRankCommandTest extends AbstractCommandTest
 {
     private CommandTester $commandTester;
 
-    /** @var VisitStatRepository&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var VisitStatRepository&MockObject */
     private VisitStatRepository $visitStatRepository;
 
     protected function getCommandTester(): CommandTester

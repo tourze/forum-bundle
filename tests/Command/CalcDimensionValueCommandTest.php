@@ -11,6 +11,7 @@ use ForumBundle\Repository\DimensionRepository;
 use ForumBundle\Repository\ThreadRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use Tourze\PHPUnitSymfonyKernelTest\AbstractCommandTestCase;
@@ -26,10 +27,10 @@ final class CalcDimensionValueCommandTest extends AbstractCommandTestCase
 {
     private CommandTester $commandTester;
 
-    /** @var DimensionRepository&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var DimensionRepository&MockObject */
     private DimensionRepository $dimensionRepository;
 
-    /** @var ThreadRepository&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var ThreadRepository&MockObject */
     private ThreadRepository $threadRepository;
 
     protected function getCommandTester(): CommandTester

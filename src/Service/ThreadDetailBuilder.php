@@ -167,6 +167,7 @@ readonly class ThreadDetailBuilder
             if (is_int($id)) {
                 return (string) $id;
             }
+
             return '';
         }
 
@@ -196,6 +197,7 @@ readonly class ThreadDetailBuilder
         }
 
         $avatar = $user->getAvatar();
+
         return is_string($avatar) ? $avatar : '';
     }
 
@@ -206,6 +208,7 @@ readonly class ThreadDetailBuilder
         }
 
         $nickname = $user->getNickName();
+
         return is_string($nickname) ? $nickname : '';
     }
 

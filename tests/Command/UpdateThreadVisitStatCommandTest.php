@@ -28,10 +28,10 @@ final class UpdateThreadVisitStatCommandTest extends AbstractCommandTestCase
 {
     private CommandTester $commandTester;
 
-    /** @var ThreadRepository&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var ThreadRepository&MockObject */
     private ThreadRepository $threadRepository;
 
-    /** @var ThreadStatisticsFacade&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var ThreadStatisticsFacade&MockObject */
     private ThreadStatisticsFacade $threadStatisticsFacade;
 
     protected function getCommandTester(): CommandTester

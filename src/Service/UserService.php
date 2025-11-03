@@ -82,6 +82,7 @@ readonly class UserService
             return '';
         }
         $avatarValue = $user->getAvatar();
+
         return is_string($avatarValue) ? $avatarValue : '';
     }
 
@@ -91,6 +92,7 @@ readonly class UserService
             return '';
         }
         $nicknameValue = $user->getNickName();
+
         return is_string($nicknameValue) ? $nicknameValue : '';
     }
 
@@ -104,10 +106,12 @@ readonly class UserService
             if (is_string($idValue)) {
                 return (int) $idValue;
             }
+
             return 0;
         }
 
         $identifier = $user->getUserIdentifier();
+
         return is_numeric($identifier) ? (int) $identifier : 0;
     }
 }

@@ -41,6 +41,7 @@ final class ForumThreadMediaCrudController extends AbstractCrudController
                     if (is_int($value) || is_string($value)) {
                         return (string) $value . ' B';
                     }
+
                     return '0 B';
                 }),
             TextField::new('options', '扩展选项')

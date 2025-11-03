@@ -20,6 +20,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Filter\ChoiceFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\TextFilter;
+use ForumBundle\Entity\Thread;
 use ForumBundle\Entity\ThreadComment;
 use ForumBundle\Enum\ThreadCommentState;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
@@ -73,9 +74,10 @@ final class ForumThreadCommentCrudController extends AbstractCrudController
             ->setRequired(true)
             ->setMaxLength(50)
             ->formatValue(function ($value): string {
-                if (is_string($value) && $value !== '') {
+                if (is_string($value) && '' !== $value) {
                     return mb_substr(strip_tags($value), 0, 50) . '...';
                 }
+
                 return '';
             })
         ;
@@ -145,8 +147,10 @@ final class ForumThreadCommentCrudController extends AbstractCrudController
             }
             if (method_exists($user, 'getUsername')) {
                 $username = $user->getUsername();
+
                 return is_string($username) ? $username : 'User';
             }
+
             return 'User';
         };
     }
@@ -154,9 +158,10 @@ final class ForumThreadCommentCrudController extends AbstractCrudController
     private function getThreadChoiceLabel(): callable
     {
         return function ($thread): string {
-            if ($thread instanceof \ForumBundle\Entity\Thread) {
+            if ($thread instanceof Thread) {
                 return mb_substr($thread->getTitle() ?? '', 0, 50);
             }
+
             return '';
         };
     }

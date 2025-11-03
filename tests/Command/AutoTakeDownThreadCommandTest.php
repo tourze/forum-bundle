@@ -10,6 +10,7 @@ use ForumBundle\Command\AutoTakeDownThreadCommand;
 use ForumBundle\Repository\ThreadRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use Tourze\PHPUnitSymfonyKernelTest\AbstractCommandTestCase;
@@ -25,7 +26,7 @@ final class AutoTakeDownThreadCommandTest extends AbstractCommandTestCase
 {
     private CommandTester $commandTester;
 
-    /** @var ThreadRepository&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var ThreadRepository&MockObject */
     private ThreadRepository $threadRepository;
 
     protected function getCommandTester(): CommandTester

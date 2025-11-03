@@ -69,8 +69,10 @@ final class ForumThreadCrudController extends AbstractCrudController
                 }
                 if (method_exists($user, 'getUsername')) {
                     $username = $user->getUsername();
+
                     return is_string($username) ? $username : 'User';
                 }
+
                 return 'User';
             })
         ;

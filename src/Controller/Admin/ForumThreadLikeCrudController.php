@@ -15,6 +15,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\ChoiceFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\DateTimeFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+use ForumBundle\Entity\Thread;
 use ForumBundle\Entity\ThreadLike;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -51,9 +52,10 @@ final class ForumThreadLikeCrudController extends AbstractCrudController
 
         yield AssociationField::new('thread', '关联帖子')
             ->setFormTypeOption('choice_label', function ($thread): string {
-                if ($thread instanceof \ForumBundle\Entity\Thread) {
+                if ($thread instanceof Thread) {
                     return mb_substr($thread->getTitle() ?? '', 0, 50);
                 }
+
                 return '';
             })
         ;
@@ -65,8 +67,10 @@ final class ForumThreadLikeCrudController extends AbstractCrudController
                 }
                 if (method_exists($user, 'getUsername')) {
                     $username = $user->getUsername();
+
                     return is_string($username) ? $username : 'User';
                 }
+
                 return 'User';
             })
         ;

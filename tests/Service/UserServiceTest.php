@@ -13,6 +13,7 @@ use ForumBundle\Repository\ThreadLikeRepository;
 use ForumBundle\Service\UserService;
 use ForumBundle\Vo\UserInfo;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Tourze\UserFollowBundle\Service\FollowService;
@@ -25,16 +26,16 @@ final class UserServiceTest extends TestCase
 {
     private UserService $service;
 
-    /** @var ThreadCommentLikeRepository&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var ThreadCommentLikeRepository&MockObject */
     private ThreadCommentLikeRepository $threadCommentLikeRepository;
 
-    /** @var ThreadLikeRepository&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var ThreadLikeRepository&MockObject */
     private ThreadLikeRepository $threadLikeRepository;
 
-    /** @var FollowService&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var FollowService&MockObject */
     private FollowService $followService;
 
-    /** @var MessageNotificationRepository&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var MessageNotificationRepository&MockObject */
     private MessageNotificationRepository $messageNotificationRepository;
 
     protected function setUp(): void

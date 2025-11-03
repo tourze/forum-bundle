@@ -6,6 +6,7 @@ use Doctrine\Common\Collections\Collection;
 use ForumBundle\Entity\Thread;
 use ForumBundle\Service\ThreadEntityService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -21,13 +22,13 @@ class ThreadEntityServiceTest extends TestCase
 {
     private ThreadEntityService $service;
 
-    /** @var EventDispatcherInterface&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var EventDispatcherInterface&MockObject */
     private EventDispatcherInterface $eventDispatcher;
 
-    /** @var Security&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var Security&MockObject */
     private Security $security;
 
-    /** @var UrlGeneratorInterface&\PHPUnit\Framework\MockObject\MockObject */
+    /** @var UrlGeneratorInterface&MockObject */
     private UrlGeneratorInterface $urlGenerator;
 
     protected function setUp(): void
