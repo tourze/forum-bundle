@@ -86,7 +86,7 @@ class StatService
         ]);
 
         $visitStat->setVisitTotal($visitStat->getVisitTotal() + 1);
-        $visitStat->setCommentTotal($commentTotal ?? 0);
+        $visitStat->setCommentTotal($commentTotal);
         $visitStat->setCollectCount($threadCollectCount);
         $visitStat->setLikeTotal($threadLikeCount);
         $visitStat->setShareTotal($threadShareCount);

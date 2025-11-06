@@ -136,9 +136,10 @@ final class ForumForumShareRecordCrudControllerTest extends AbstractEasyAdminCon
     public static function provideIndexPageHeaders(): iterable
     {
         yield 'id' => ['ID'];
-        yield 'thread' => ['帖子'];
         yield 'user' => ['用户'];
-        yield 'created_at' => ['创建时间'];
+        yield 'type' => ['分享类型'];
+        yield 'sourceId' => ['来源主键ID'];
+        yield 'createTime' => ['创建时间'];
     }
 
     /**
@@ -146,11 +147,9 @@ final class ForumForumShareRecordCrudControllerTest extends AbstractEasyAdminCon
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
-        yield 'thread' => ['thread'];
-        yield 'user' => ['user'];
+        yield 'user' => ['用户'];
+        yield 'type' => ['分享类型'];
+        yield 'sourceId' => ['来源主键ID'];
     }
 
     /**

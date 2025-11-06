@@ -67,7 +67,7 @@
     "tourze/user-id-bundle": "1.0.*",
     "tourze/user-service-contracts": "1.*",
     "tourze/user-track-bundle": "0.1.*",
-    "tourze/wechat-mini-program-auth-bundle": "0.0.*",
+    "tourze/wechat-mini-program-auth-bundle": "1.0.*",
     "tourze/wechat-mini-program-security-bundle": "self.version",
     "tourze/wechat-mini-program-share-bundle": "0.0.*",
     "yiisoft/arrays": "^3"

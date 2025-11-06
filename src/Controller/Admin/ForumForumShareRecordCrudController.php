@@ -18,7 +18,7 @@ use ForumBundle\Entity\ForumShareRecord;
 /**
  * @extends AbstractCrudController<ForumShareRecord>
  */
-#[AdminCrud]
+#[AdminCrud(routePath: '/forum/share-record', routeName: 'forum_share_record')]
 final class ForumForumShareRecordCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -29,7 +29,7 @@ final class ForumForumShareRecordCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id', 'ID'),
             AssociationField::new('user', '用户'),
             TextField::new('type', '分享类型'),
             TextField::new('sourceId', '来源主键ID'),
