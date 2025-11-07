@@ -38,7 +38,6 @@
     "symfony/yaml": "^7.3",
     "tourze/arrayable": "1.*",
     "tourze/async-contracts": "1.0.*",
-    "tourze/biz-user-bundle": "0.0.*",
     "tourze/bundle-dependency": "1.*",
     "tourze/catalog-bundle": "1.0.*",
     "tourze/doctrine-entity-lock-bundle": "1.0.*",

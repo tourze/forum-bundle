@@ -2,15 +2,13 @@
 
 namespace ForumBundle\DataFixtures;
 
-use BizUserBundle\DataFixtures\BizUserFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use ForumBundle\Entity\ForumShareRecord;
 use Tourze\UserServiceContracts\UserManagerInterface;
 
-class ForumShareRecordFixtures extends Fixture implements FixtureGroupInterface, DependentFixtureInterface
+class ForumShareRecordFixtures extends Fixture implements FixtureGroupInterface
 {
     public function __construct(
         private readonly ?UserManagerInterface $userManager = null,
@@ -22,10 +20,6 @@ class ForumShareRecordFixtures extends Fixture implements FixtureGroupInterface,
         return ['forum'];
     }
 
-    public function getDependencies(): array
-    {
-        return [BizUserFixtures::class];
-    }
 
     public function load(ObjectManager $manager): void
     {

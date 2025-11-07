@@ -18,7 +18,7 @@ class JsonRpcSubscriber
             return;
         }
 
-        $bizUser = $event->getBizUser();
+        $user = $event->getBizUser();
 
         // 需要实现官方用户获取逻辑
         // 等待官方用户服务可用后，实现关注关系逻辑：
