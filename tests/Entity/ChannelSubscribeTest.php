@@ -30,8 +30,7 @@ final class ChannelSubscribeTest extends AbstractEntityTestCase
     public static function propertiesProvider(): iterable
     {
         yield 'valid' => ['valid', true];
-        yield 'user' => ['user', null];
-        yield 'channel' => ['channel', null];
+        // user 和 channel 属性为接口类型，避免序列化问题，由专门的测试方法覆盖
     }
 
     public function testChannelSubscribeShouldBeInstantiable(): void

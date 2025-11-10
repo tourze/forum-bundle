@@ -28,7 +28,7 @@ final class ForumShareRecordTest extends AbstractEntityTestCase
      */
     public static function propertiesProvider(): iterable
     {
-        yield 'user' => ['user', null];
+        // user 属性为 UserInterface 类型，避免序列化问题，由专门的测试方法覆盖
         yield 'type' => ['type', 'thread'];
         yield 'sourceId' => ['sourceId', '123456'];
     }

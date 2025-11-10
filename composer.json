@@ -64,7 +64,7 @@
     "tourze/user-event-bundle": "1.0.*",
     "tourze/user-follow-bundle": "0.0.*",
     "tourze/user-id-bundle": "1.0.*",
-    "tourze/user-service-contracts": "1.*",
+    "tourze/user-service-contracts": "1.1.*",
     "tourze/user-track-bundle": "0.1.*",
     "tourze/wechat-mini-program-auth-bundle": "1.0.*",
     "tourze/wechat-mini-program-security-bundle": "self.version",
