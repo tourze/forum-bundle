@@ -24,12 +24,19 @@ final class ForumChannelSubscribeCrudController extends AbstractCrudController
 
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id', 'ID'),
-            AssociationField::new('user', '用户'),
-            AssociationField::new('channel', '频道'),
-            BooleanField::new('valid', '有效'),
-        ];
+        yield IdField::new('id', 'ID')->setMaxLength(9999);
+
+        yield AssociationField::new('user', '用户')
+            ->setRequired(true)
+        ;
+
+        yield AssociationField::new('channel', '频道')
+            ->setRequired(true)
+        ;
+
+        yield BooleanField::new('valid', '有效')
+            ->setHelp('控制订阅是否有效')
+        ;
     }
 
     public function configureFilters(Filters $filters): Filters
@@ -50,6 +57,8 @@ final class ForumChannelSubscribeCrudController extends AbstractCrudController
             ->setPageTitle('new', '创建频道订阅')
             ->setPageTitle('edit', '编辑频道订阅')
             ->setPageTitle('detail', '频道订阅详情')
+            ->setDefaultSort(['id' => 'DESC'])
+            ->setPaginatorPageSize(20)
         ;
     }
 }

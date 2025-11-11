@@ -72,7 +72,8 @@ final class ForumChannelCrudControllerTest extends AbstractEasyAdminControllerTe
     public function testValidationErrors(): void
     {
         $client = $this->createAuthenticatedClient();
-        $crawler = $client->request('GET', '/admin?crudAction=new&crudControllerFqcn=' . urlencode(ForumChannelCrudController::class));
+        self::getClient($client);
+        $crawler = $client->request('GET', $this->generateAdminUrl('new'));
         $this->assertResponseIsSuccessful();
 
         $form = $crawler->selectButton('Create')->form();

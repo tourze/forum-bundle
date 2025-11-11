@@ -60,6 +60,25 @@ final class ForumChannelSubscribeCrudControllerTest extends AbstractEasyAdminCon
         $this->assertInstanceOf($expectedClass, $instance);
     }
 
+    #[Test]
+    public function testValidationErrors(): void
+    {
+        $client = $this->createAuthenticatedClient();
+        self::getClient($client);
+        $crawler = $client->request('GET', $this->generateAdminUrl('new'));
+        $this->assertResponseIsSuccessful();
+
+        $form = $crawler->selectButton('Create')->form();
+        // 提交空表单以触发验证错误
+        $crawler = $client->submit($form);
+
+        $this->assertResponseStatusCodeSame(422);
+        $response = $client->getResponse();
+        $content = $response->getContent();
+        $this->assertIsString($content);
+        $this->assertStringContainsString('required', $content);
+    }
+
     /**
      * @return ForumChannelSubscribeCrudController
      */
