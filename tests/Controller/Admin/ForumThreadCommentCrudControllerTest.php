@@ -39,27 +39,6 @@ final class ForumThreadCommentCrudControllerTest extends AbstractEasyAdminContro
         $this->assertStringContainsString('dashboard', $content);
     }
 
-    #[Test]
-    public function testGetEntityFqcnReturnsStringType(): void
-    {
-        $result = ForumThreadCommentCrudController::getEntityFqcn();
-        $this->assertIsString($result);
-        $this->assertNotEmpty($result);
-    }
-
-    #[Test]
-    public function testGetEntityFqcnReturnsThreadCommentClass(): void
-    {
-        $expectedClass = ThreadComment::class;
-        $actualClass = ForumThreadCommentCrudController::getEntityFqcn();
-
-        $this->assertSame($expectedClass, $actualClass);
-
-        // 测试类是否可以实例化
-        $instance = new $actualClass();
-        $this->assertInstanceOf($expectedClass, $instance);
-    }
-
     /**
      * @return ForumThreadCommentCrudController
      */

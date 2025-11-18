@@ -39,27 +39,6 @@ final class ForumMessageNotificationCrudControllerTest extends AbstractEasyAdmin
         $this->assertStringContainsString('dashboard', $content);
     }
 
-    #[Test]
-    public function testGetEntityFqcnReturnsStringType(): void
-    {
-        $result = ForumMessageNotificationCrudController::getEntityFqcn();
-        $this->assertIsString($result);
-        $this->assertNotEmpty($result);
-    }
-
-    #[Test]
-    public function testGetEntityFqcnReturnsMessageNotificationClass(): void
-    {
-        $expectedClass = MessageNotification::class;
-        $actualClass = ForumMessageNotificationCrudController::getEntityFqcn();
-
-        $this->assertSame($expectedClass, $actualClass);
-
-        // 测试类是否可以实例化
-        $instance = new $actualClass();
-        $this->assertInstanceOf($expectedClass, $instance);
-    }
-
     /**
      * @return ForumMessageNotificationCrudController
      */

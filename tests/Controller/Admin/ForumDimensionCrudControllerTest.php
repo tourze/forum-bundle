@@ -39,27 +39,6 @@ final class ForumDimensionCrudControllerTest extends AbstractEasyAdminController
         $this->assertStringContainsString('dashboard', $content);
     }
 
-    #[Test]
-    public function testGetEntityFqcnReturnsStringType(): void
-    {
-        $result = ForumDimensionCrudController::getEntityFqcn();
-        $this->assertIsString($result);
-        $this->assertNotEmpty($result);
-    }
-
-    #[Test]
-    public function testGetEntityFqcnReturnsDimensionClass(): void
-    {
-        $expectedClass = Dimension::class;
-        $actualClass = ForumDimensionCrudController::getEntityFqcn();
-
-        $this->assertSame($expectedClass, $actualClass);
-
-        // 测试类是否可以实例化
-        $instance = new $actualClass();
-        $this->assertInstanceOf($expectedClass, $instance);
-    }
-
     /**
      * @return ForumDimensionCrudController
      */

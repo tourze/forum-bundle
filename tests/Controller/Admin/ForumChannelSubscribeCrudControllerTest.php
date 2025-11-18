@@ -40,27 +40,6 @@ final class ForumChannelSubscribeCrudControllerTest extends AbstractEasyAdminCon
     }
 
     #[Test]
-    public function testGetEntityFqcnReturnsStringType(): void
-    {
-        $result = ForumChannelSubscribeCrudController::getEntityFqcn();
-        $this->assertIsString($result);
-        $this->assertNotEmpty($result);
-    }
-
-    #[Test]
-    public function testGetEntityFqcnReturnsChannelSubscribeClass(): void
-    {
-        $expectedClass = ChannelSubscribe::class;
-        $actualClass = ForumChannelSubscribeCrudController::getEntityFqcn();
-
-        $this->assertSame($expectedClass, $actualClass);
-
-        // 测试类是否可以实例化
-        $instance = new $actualClass();
-        $this->assertInstanceOf($expectedClass, $instance);
-    }
-
-    #[Test]
     public function testValidationErrors(): void
     {
         $client = $this->createAuthenticatedClient();

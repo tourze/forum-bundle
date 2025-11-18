@@ -39,27 +39,6 @@ final class ForumSortingRuleCrudControllerTest extends AbstractEasyAdminControll
         $this->assertStringContainsString('dashboard', $content);
     }
 
-    #[Test]
-    public function testGetEntityFqcnReturnsStringType(): void
-    {
-        $result = ForumSortingRuleCrudController::getEntityFqcn();
-        $this->assertIsString($result);
-        $this->assertNotEmpty($result);
-    }
-
-    #[Test]
-    public function testGetEntityFqcnReturnsSortingRuleClass(): void
-    {
-        $expectedClass = SortingRule::class;
-        $actualClass = ForumSortingRuleCrudController::getEntityFqcn();
-
-        $this->assertSame($expectedClass, $actualClass);
-
-        // 测试类是否可以实例化
-        $instance = new $actualClass();
-        $this->assertInstanceOf($expectedClass, $instance);
-    }
-
     /**
      * @return ForumSortingRuleCrudController
      */

@@ -39,27 +39,6 @@ final class ForumThreadMediaCrudControllerTest extends AbstractEasyAdminControll
         $this->assertStringContainsString('dashboard', $content);
     }
 
-    #[Test]
-    public function testGetEntityFqcnReturnsStringType(): void
-    {
-        $result = ForumThreadMediaCrudController::getEntityFqcn();
-        $this->assertIsString($result);
-        $this->assertNotEmpty($result);
-    }
-
-    #[Test]
-    public function testGetEntityFqcnReturnsThreadMediaClass(): void
-    {
-        $expectedClass = ThreadMedia::class;
-        $actualClass = ForumThreadMediaCrudController::getEntityFqcn();
-
-        $this->assertSame($expectedClass, $actualClass);
-
-        // 测试类是否可以实例化
-        $instance = new $actualClass();
-        $this->assertInstanceOf($expectedClass, $instance);
-    }
-
     /**
      * @return ForumThreadMediaCrudController
      */

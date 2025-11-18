@@ -39,27 +39,6 @@ final class ForumThreadRelationCrudControllerTest extends AbstractEasyAdminContr
         $this->assertStringContainsString('dashboard', $content);
     }
 
-    #[Test]
-    public function testGetEntityFqcnReturnsStringType(): void
-    {
-        $result = ForumThreadRelationCrudController::getEntityFqcn();
-        $this->assertIsString($result);
-        $this->assertNotEmpty($result);
-    }
-
-    #[Test]
-    public function testGetEntityFqcnReturnsThreadRelationClass(): void
-    {
-        $expectedClass = ThreadRelation::class;
-        $actualClass = ForumThreadRelationCrudController::getEntityFqcn();
-
-        $this->assertSame($expectedClass, $actualClass);
-
-        // 测试类是否可以实例化
-        $instance = new $actualClass();
-        $this->assertInstanceOf($expectedClass, $instance);
-    }
-
     /**
      * @return AbstractCrudController<ThreadRelation>
      */

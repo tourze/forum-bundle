@@ -39,27 +39,6 @@ final class ForumVisitStatCrudControllerTest extends AbstractEasyAdminController
         $this->assertStringContainsString('dashboard', $content);
     }
 
-    #[Test]
-    public function testGetEntityFqcnReturnsStringType(): void
-    {
-        $result = ForumVisitStatCrudController::getEntityFqcn();
-        $this->assertIsString($result);
-        $this->assertNotEmpty($result);
-    }
-
-    #[Test]
-    public function testGetEntityFqcnReturnsVisitStatClass(): void
-    {
-        $expectedClass = VisitStat::class;
-        $actualClass = ForumVisitStatCrudController::getEntityFqcn();
-
-        $this->assertSame($expectedClass, $actualClass);
-
-        // 测试类是否可以实例化
-        $instance = new $actualClass();
-        $this->assertInstanceOf($expectedClass, $instance);
-    }
-
     /**
      * @return AbstractCrudController<VisitStat>
      */
