@@ -13,7 +13,7 @@ use Tourze\DoctrineUserBundle\Traits\CreatedByAware;
 
 #[ORM\Entity(repositoryClass: ForumShareRecordRepository::class, readOnly: true)]
 #[ORM\Table(name: 'forum_share_record', options: ['comment' => '帖子分享记录'])]
-#[ORM\Index(columns: ['type', 'source_id'], name: 'forum_share_record_idx_forum_share_record_source_id_type')]
+#[ORM\Index(name: 'forum_share_record_idx_forum_share_record_source_id_type', columns: ['type', 'source_id'])]
 class ForumShareRecord implements \Stringable
 {
     use SnowflakeKeyAware;
