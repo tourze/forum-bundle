@@ -3,37 +3,20 @@ services:
   _defaults:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
-    public: true
+    public: false
 
-  # Commands
-  ForumBundle\Command\:
-    resource: '../../Command/'
-
-  # Controller
   ForumBundle\Controller\:
     resource: '../../Controller/'
-
-  # EntityListener
-  ForumBundle\EntityListener\:
-    resource: '../../EntityListener/'
-
-  # EventSubscriber
-  ForumBundle\EventSubscriber\:
-    resource: '../../EventSubscriber/'
-
-  # MessageHandler
-  ForumBundle\MessageHandler\:
-    resource: '../../MessageHandler/'
-    tags: ['messenger.message_handler']
-
-  # Repository
   ForumBundle\Repository\:
     resource: '../../Repository/'
-
-  # Service
   ForumBundle\Service\:
     resource: '../../Service/'
-
-  # Util
-  ForumBundle\Util\:
-    resource: '../../Util/'
+    public: true
+  ForumBundle\EventSubscriber\:
+    resource: '../../EventSubscriber/'
+  ForumBundle\MessageHandler\:
+    resource: '../../MessageHandler/'
+  ForumBundle\Command\:
+    resource: '../../Command/'
+  ForumBundle\EntityListener\:
+    resource: '../../EntityListener/'

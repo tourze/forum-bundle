@@ -17,6 +17,28 @@ use Tourze\PHPUnitSymfonyWebTest\AbstractEasyAdminControllerTestCase;
 #[RunTestsInSeparateProcesses]
 final class ForumSortingRuleCrudControllerTest extends AbstractEasyAdminControllerTestCase
 {
+    protected function afterEasyAdminSetUp(): void
+    {
+        $em = self::getEntityManager();
+
+        // 创建维度实体
+        $dimension = new \ForumBundle\Entity\Dimension();
+        $dimension->setTitle('测试维度');
+        $dimension->setCode('test');
+        $dimension->setValid(true);
+
+        // 创建排序规则实体
+        $sortingRule = new SortingRule();
+        $sortingRule->setTitle('测试规则');
+        $sortingRule->setFormula('test_formula');
+        $sortingRule->setDimension($dimension);
+
+        // 持久化实体
+        $em->persist($dimension);
+        $em->persist($sortingRule);
+        $em->flush();
+    }
+
     #[Test]
     public function testEntityFqcnIsCorrect(): void
     {
@@ -53,10 +75,9 @@ final class ForumSortingRuleCrudControllerTest extends AbstractEasyAdminControll
     public static function provideIndexPageHeaders(): iterable
     {
         yield 'id' => ['ID'];
-        yield 'name' => ['名称'];
-        yield 'rule' => ['规则'];
-        yield 'valid' => ['有效'];
-        yield 'created_at' => ['创建时间'];
+        yield 'name' => ['规则名'];
+        yield 'dimension' => ['维度'];
+        yield 'formula' => ['规则公式'];
     }
 
     /**
@@ -64,12 +85,9 @@ final class ForumSortingRuleCrudControllerTest extends AbstractEasyAdminControll
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
-        yield 'name' => ['name'];
-        yield 'rule' => ['rule'];
-        yield 'valid' => ['valid'];
+        yield 'title' => ['title'];
+        yield 'formula' => ['formula'];
+        yield 'dimension' => ['dimension'];
     }
 
     /**
@@ -78,7 +96,7 @@ final class ForumSortingRuleCrudControllerTest extends AbstractEasyAdminControll
     public static function provideEditPageFields(): iterable
     {
         yield 'title_field' => ['title'];
-        yield 'content_field' => ['content'];
-        yield 'status_field' => ['status'];
+        yield 'formula_field' => ['formula'];
+        yield 'dimension_field' => ['dimension'];
     }
 }

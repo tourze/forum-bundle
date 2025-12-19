@@ -64,12 +64,11 @@ final class ForumThreadDimensionCrudControllerTest extends AbstractEasyAdminCont
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
+        yield 'id' => ['id'];
         yield 'thread' => ['thread'];
         yield 'dimension' => ['dimension'];
         yield 'value' => ['value'];
+        yield 'context' => ['context'];
     }
 
     /**
@@ -77,8 +76,10 @@ final class ForumThreadDimensionCrudControllerTest extends AbstractEasyAdminCont
      */
     public static function provideEditPageFields(): iterable
     {
-        yield 'title_field' => ['title'];
-        yield 'content_field' => ['content'];
-        yield 'status_field' => ['status'];
+        yield 'id' => ['id'];
+        yield 'thread' => ['thread'];
+        yield 'dimension' => ['dimension'];
+        yield 'value' => ['value'];
+        yield 'context' => ['context'];
     }
 }

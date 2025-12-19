@@ -17,7 +17,7 @@ use WechatMiniProgramShareBundle\Event\InviteUserEvent;
  */
 #[Autoconfigure(public: true)]
 #[WithMonologChannel(channel: 'forum')]
-readonly class InviteUserSubscriber
+final readonly class InviteUserSubscriber
 {
     public function __construct(
         private LoggerInterface $logger,

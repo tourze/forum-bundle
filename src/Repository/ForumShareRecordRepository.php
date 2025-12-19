@@ -11,7 +11,7 @@ use Tourze\PHPUnitSymfonyKernelTest\Attribute\AsRepository;
  * @extends ServiceEntityRepository<ForumShareRecord>
  */
 #[AsRepository(entityClass: ForumShareRecord::class)]
-class ForumShareRecordRepository extends ServiceEntityRepository
+final class ForumShareRecordRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

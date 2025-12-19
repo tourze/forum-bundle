@@ -8,7 +8,7 @@ use Symfony\Contracts\EventDispatcher\Event;
 /**
  * 评论帖子后
  */
-class AfterCommentThread extends Event
+final class AfterCommentThread extends Event
 {
     private ThreadComment $threadComment;
 

@@ -11,7 +11,7 @@ use Tourze\PHPUnitSymfonyKernelTest\Attribute\AsRepository;
  * @extends ServiceEntityRepository<ThreadDimension>
  */
 #[AsRepository(entityClass: ThreadDimension::class)]
-class ThreadDimensionRepository extends ServiceEntityRepository
+final class ThreadDimensionRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

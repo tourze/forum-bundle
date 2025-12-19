@@ -11,7 +11,7 @@ use Tourze\PHPUnitSymfonyKernelTest\Attribute\AsRepository;
  * @extends ServiceEntityRepository<SortingRule>
  */
 #[AsRepository(entityClass: SortingRule::class)]
-class SortingRuleRepository extends ServiceEntityRepository
+final class SortingRuleRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

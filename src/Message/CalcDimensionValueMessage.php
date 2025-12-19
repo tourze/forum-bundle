@@ -4,7 +4,7 @@ namespace ForumBundle\Message;
 
 use Tourze\AsyncContracts\AsyncMessageInterface;
 
-class CalcDimensionValueMessage implements AsyncMessageInterface
+final class CalcDimensionValueMessage implements AsyncMessageInterface
 {
     private string $threadId;
 

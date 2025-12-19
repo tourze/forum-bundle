@@ -16,7 +16,7 @@ use ForumBundle\Entity\SortingRule;
 /**
  * @extends AbstractCrudController<SortingRule>
  */
-#[AdminCrud]
+#[AdminCrud(routePath: '/forum/sorting-rule', routeName: 'forum_sorting_rule')]
 final class ForumSortingRuleCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -27,7 +27,7 @@ final class ForumSortingRuleCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            IdField::new('id'),
+            IdField::new('id', 'ID'),
             TextField::new('title', '规则名'),
             AssociationField::new('dimension', '维度'),
             TextareaField::new('formula', '规则公式'),

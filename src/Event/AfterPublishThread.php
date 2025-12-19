@@ -5,7 +5,7 @@ namespace ForumBundle\Event;
 use ForumBundle\Entity\Thread;
 use Symfony\Contracts\EventDispatcher\Event;
 
-class AfterPublishThread extends Event
+final class AfterPublishThread extends Event
 {
     /**
      * @var array<string, mixed>

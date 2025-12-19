@@ -9,7 +9,7 @@ use ForumBundle\Event\AfterThreadDeleteEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 #[AsEntityListener(event: Events::postRemove, method: 'postRemove', entity: Thread::class)]
-class ThreadListener
+final class ThreadListener
 {
     public function __construct(private readonly EventDispatcherInterface $eventDispatcher)
     {

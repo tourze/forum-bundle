@@ -14,7 +14,7 @@ use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
  * 处理点赞事件
  */
 #[WithMonologChannel(channel: 'forum')]
-readonly class LikeSubscriber
+final readonly class LikeSubscriber
 {
     public function __construct(
         private LoggerInterface $logger,

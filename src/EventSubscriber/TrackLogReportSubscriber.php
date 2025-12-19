@@ -11,7 +11,7 @@ use Tourze\UserTrackBundle\Event\TrackLogReportEvent;
 /**
  * 处理分享上报事件
  */
-class TrackLogReportSubscriber
+final class TrackLogReportSubscriber
 {
     public function __construct(
         private readonly ThreadRepository $threadRepository,

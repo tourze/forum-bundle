@@ -6,7 +6,7 @@ use ForumBundle\Entity\Thread;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Contracts\EventDispatcher\Event;
 
-class AfterThreadAddEvent extends Event
+final class AfterThreadAddEvent extends Event
 {
     private Thread $thread;
 

@@ -11,7 +11,7 @@ use Tourze\PHPUnitSymfonyKernelTest\Attribute\AsRepository;
  * @extends ServiceEntityRepository<ChannelSubscribe>
  */
 #[AsRepository(entityClass: ChannelSubscribe::class)]
-class ChannelSubscribeRepository extends ServiceEntityRepository
+final class ChannelSubscribeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

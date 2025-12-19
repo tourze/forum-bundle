@@ -11,7 +11,7 @@ use Tourze\PHPUnitSymfonyKernelTest\Attribute\AsRepository;
  * @extends ServiceEntityRepository<ThreadRelation>
  */
 #[AsRepository(entityClass: ThreadRelation::class)]
-class ThreadRelationRepository extends ServiceEntityRepository
+final class ThreadRelationRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

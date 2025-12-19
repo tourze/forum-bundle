@@ -14,7 +14,7 @@ use Tourze\Symfony\CronJob\Attribute\AsCronTask;
 
 #[AsCronTask(expression: '* */1 * * *')]
 #[AsCommand(name: self::NAME, description: '计算帖子评论统计指标排名')]
-class UpdateThreadVisitStatCommentRankCommand extends LockableCommand
+final class UpdateThreadVisitStatCommentRankCommand extends LockableCommand
 {
     public const NAME = 'forum:update-thread-stat-comment-rank';
 

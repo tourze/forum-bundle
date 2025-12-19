@@ -5,7 +5,7 @@ namespace ForumBundle\Event;
 use ForumBundle\Entity\Thread;
 use Tourze\UserEventBundle\Event\UserInteractionEvent;
 
-class ThreadAuditPassEvent extends UserInteractionEvent
+final class ThreadAuditPassEvent extends UserInteractionEvent
 {
     private Thread $thread;
 

@@ -53,11 +53,12 @@ final class ForumThreadCommentCrudControllerTest extends AbstractEasyAdminContro
     public static function provideIndexPageHeaders(): iterable
     {
         yield 'id' => ['ID'];
-        yield 'thread' => ['帖子'];
-        yield 'content' => ['内容'];
-        yield 'status' => ['状态'];
-        yield 'user' => ['用户'];
-        yield 'created_at' => ['创建时间'];
+        yield 'thread' => ['关联帖子'];
+        yield 'user' => ['评论用户'];
+        yield 'content' => ['评论内容'];
+        yield 'status' => ['审核状态'];
+        yield 'best' => ['是否最佳'];
+        yield 'createTime' => ['创建时间'];
     }
 
     /**

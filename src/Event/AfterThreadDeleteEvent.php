@@ -5,7 +5,7 @@ namespace ForumBundle\Event;
 use ForumBundle\Entity\Thread;
 use Symfony\Contracts\EventDispatcher\Event;
 
-class AfterThreadDeleteEvent extends Event
+final class AfterThreadDeleteEvent extends Event
 {
     private Thread $thread;
 

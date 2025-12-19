@@ -7,7 +7,7 @@ use Doctrine\ORM\Events;
 use ForumBundle\Entity\ThreadMedia;
 
 #[AsEntityListener(event: Events::prePersist, entity: ThreadMedia::class)]
-class ThreadMediaListener
+final class ThreadMediaListener
 {
     public function prePersist(ThreadMedia $threadMedia): void
     {

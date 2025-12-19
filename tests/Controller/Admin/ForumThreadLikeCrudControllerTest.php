@@ -63,11 +63,9 @@ final class ForumThreadLikeCrudControllerTest extends AbstractEasyAdminControlle
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
         yield 'thread' => ['thread'];
         yield 'user' => ['user'];
+        yield 'status' => ['status'];
     }
 
     /**
@@ -75,8 +73,8 @@ final class ForumThreadLikeCrudControllerTest extends AbstractEasyAdminControlle
      */
     public static function provideEditPageFields(): iterable
     {
-        yield 'title_field' => ['title'];
-        yield 'content_field' => ['content'];
+        yield 'thread_field' => ['thread'];
+        yield 'user_field' => ['user'];
         yield 'status_field' => ['status'];
     }
 

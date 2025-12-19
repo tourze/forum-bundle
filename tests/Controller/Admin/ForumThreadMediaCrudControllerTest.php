@@ -68,9 +68,7 @@ final class ForumThreadMediaCrudControllerTest extends AbstractEasyAdminControll
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
+        yield 'id' => ['id'];
         yield 'thread' => ['thread'];
         yield 'type' => ['type'];
         yield 'path' => ['path'];
@@ -84,8 +82,12 @@ final class ForumThreadMediaCrudControllerTest extends AbstractEasyAdminControll
      */
     public static function provideEditPageFields(): iterable
     {
-        yield 'title_field' => ['title'];
-        yield 'content_field' => ['content'];
-        yield 'status_field' => ['status'];
+        yield 'id' => ['id'];
+        yield 'thread' => ['thread'];
+        yield 'type' => ['type'];
+        yield 'path' => ['path'];
+        yield 'thumbnail' => ['thumbnail'];
+        yield 'size' => ['size'];
+        yield 'options' => ['options'];
     }
 }

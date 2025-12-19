@@ -64,12 +64,10 @@ final class ForumThreadRelationCrudControllerTest extends AbstractEasyAdminContr
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instanceId' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
-        yield 'parentThread' => ['parentThread'];
-        yield 'childThread' => ['childThread'];
-        yield 'relationType' => ['relationType'];
+        yield 'id' => ['id'];
+        yield 'sourceId' => ['sourceId'];
+        yield 'sourceType' => ['sourceType'];
+        yield 'thread' => ['thread'];
     }
 
     /**
@@ -77,8 +75,9 @@ final class ForumThreadRelationCrudControllerTest extends AbstractEasyAdminContr
      */
     public static function provideEditPageFields(): iterable
     {
-        yield 'title' => ['title'];
-        yield 'content' => ['content'];
-        yield 'status' => ['status'];
+        yield 'id' => ['id'];
+        yield 'sourceId' => ['sourceId'];
+        yield 'sourceType' => ['sourceType'];
+        yield 'thread' => ['thread'];
     }
 }

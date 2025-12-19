@@ -19,7 +19,7 @@ use Tourze\Symfony\CronJob\Attribute\AsCronTask;
 #[AsCronTask(expression: '30 * * * *')]
 #[AsCommand(name: self::NAME, description: '计算帖子的维度得分')]
 #[WithMonologChannel(channel: 'forum')]
-class CalcDimensionValueCommand extends LockableCommand
+final class CalcDimensionValueCommand extends LockableCommand
 {
     public const NAME = 'forum:calc-dimension-value';
 

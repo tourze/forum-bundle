@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
  * 处理回复帖子事件
  */
 #[WithMonologChannel(channel: 'forum')]
-readonly class ReplyCommentSubscriber
+final readonly class ReplyCommentSubscriber
 {
     public function __construct(
         private LoggerInterface $logger,

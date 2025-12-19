@@ -18,7 +18,7 @@ use WechatMiniProgramSecurityBundle\Event\MediaCheckAsyncEvent;
  * 处理媒体检测回调事件
  */
 #[WithMonologChannel(channel: 'forum')]
-readonly class MediaCheckAsyncSubscriber
+final readonly class MediaCheckAsyncSubscriber
 {
     public function __construct(
         private ThreadMediaRepository $threadMediaRepository,

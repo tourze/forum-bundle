@@ -11,7 +11,7 @@ use Tourze\PHPUnitSymfonyKernelTest\Attribute\AsRepository;
  * @extends ServiceEntityRepository<ThreadComment>
  */
 #[AsRepository(entityClass: ThreadComment::class)]
-class ThreadCommentRepository extends ServiceEntityRepository
+final class ThreadCommentRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

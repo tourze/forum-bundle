@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace ForumBundle\Tests\Command;
 
-use Doctrine\ORM\Query;
-use Doctrine\ORM\QueryBuilder;
 use ForumBundle\Command\UpdateThreadVisitStatLikeRankCommand;
+use ForumBundle\Entity\Thread;
 use ForumBundle\Entity\VisitStat;
+use ForumBundle\Enum\ThreadState;
+use ForumBundle\Enum\ThreadType;
 use ForumBundle\Repository\VisitStatRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
-use PHPUnit\Framework\MockObject\MockObject;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
 use Tourze\PHPUnitSymfonyKernelTest\AbstractCommandTestCase;
@@ -27,7 +27,6 @@ final class UpdateThreadVisitStatLikeRankCommandTest extends AbstractCommandTest
 {
     private CommandTester $commandTester;
 
-    /** @var VisitStatRepository&MockObject */
     private VisitStatRepository $visitStatRepository;
 
     protected function getCommandTester(): CommandTester
@@ -37,23 +36,26 @@ final class UpdateThreadVisitStatLikeRankCommandTest extends AbstractCommandTest
 
     protected function onSetUp(): void
     {
-        /*
-         * Mock VisitStatRepository 具体类的原因：
-         * 1. Repository类通常没有对应的接口，直接继承自ServiceEntityRepository
-         * 2. 测试需要Mock具体的查询方法（如createQueryBuilder等），这些方法定义在具体Repository实现中
-         * 3. 使用具体类Mock是测试Repository层的标准做法
-         */
-        $this->visitStatRepository = $this->createMock(VisitStatRepository::class);
+        $this->visitStatRepository = self::getContainer()->get(VisitStatRepository::class);
 
-        // 将Mock服务注入到容器中，移除EntityManager Mock避免重复初始化错误
-        $container = self::getContainer();
-        $container->set(VisitStatRepository::class, $this->visitStatRepository);
         $application = new Application();
         $command = self::getContainer()->get(UpdateThreadVisitStatLikeRankCommand::class);
         self::assertInstanceOf(UpdateThreadVisitStatLikeRankCommand::class, $command);
-        $application->add($command);
+        $application->addCommand($command);
 
         $this->commandTester = new CommandTester($command);
+
+        // 开始事务，确保测试隔离
+        self::getEntityManager()->beginTransaction();
+    }
+
+    protected function onTearDown(): void
+    {
+        // 回滚事务，清理测试数据
+        if (self::getEntityManager()->getConnection()->isTransactionActive()) {
+            self::getEntityManager()->rollback();
+        }
+        parent::onTearDown();
     }
 
     public function testExecuteWithDisabledTaskShouldReturnSuccess(): void
@@ -65,27 +67,76 @@ final class UpdateThreadVisitStatLikeRankCommandTest extends AbstractCommandTest
         $this->assertSame(0, $this->commandTester->getStatusCode());
     }
 
-    public function testExecuteWithEnabledTaskShouldReturnSuccess(): void
+    public function testExecuteWithEnabledTaskShouldUpdateLikeRank(): void
     {
         $_ENV['ENABLE_THREAD_STAT_RANK_TASK'] = '1';
         $_ENV['THREAD_RANK_LIMIT'] = '10';
 
-        // 返回空查询结果，避免EntityManager处理Mock对象的问题
-        $query = $this->createMock(Query::class);
-        $query->method('getResult')->willReturn([]);
+        // 创建一个测试帖子和对应的访问统计
+        $thread = new Thread();
+        $thread->setTitle('Test Thread');
+        $thread->setContent('Test content');
+        $thread->setType(ThreadType::USER_THREAD);
+        $thread->setStatus(ThreadState::AUDIT_PASS);
 
-        $queryBuilder = $this->createMock(QueryBuilder::class);
-        $queryBuilder->method('orderBy')->willReturn($queryBuilder);
-        $queryBuilder->method('setMaxResults')->willReturn($queryBuilder);
-        $queryBuilder->method('where')->willReturn($queryBuilder);
-        $queryBuilder->method('andWhere')->willReturn($queryBuilder);
-        $queryBuilder->method('setParameter')->willReturn($queryBuilder);
-        $queryBuilder->method('getQuery')->willReturn($query);
+        $visitStat = new VisitStat();
+        $visitStat->setThread($thread);
+        $visitStat->setLikeTotal(100); // 设置一个较高的点赞数
 
-        $this->visitStatRepository->method('createQueryBuilder')->willReturn($queryBuilder);
+        self::getEntityManager()->persist($thread);
+        self::getEntityManager()->persist($visitStat);
+        self::getEntityManager()->flush();
+
+        // 验证初始排名是 0
+        $this->assertSame(0, $visitStat->getLikeRank());
+
+        // 执行命令
         $this->commandTester->execute([]);
 
         $this->assertSame(0, $this->commandTester->getStatusCode());
+
+        // 刷新实体以获取最新状态
+        self::getEntityManager()->refresh($visitStat);
+
+        // 验证排名已更新（应该大于0，因为我们设置了较高的点赞数）
+        $this->assertGreaterThan(0, $visitStat->getLikeRank());
+    }
+
+    public function testExecuteWithExistingRanksShouldResetZeroRanks(): void
+    {
+        $_ENV['ENABLE_THREAD_STAT_RANK_TASK'] = '1';
+        $_ENV['THREAD_RANK_LIMIT'] = '1';
+
+        // 创建一个访问统计，点赞数很低
+        $thread = new Thread();
+        $thread->setTitle('Test Thread');
+        $thread->setContent('Test content');
+        $thread->setType(ThreadType::USER_THREAD);
+        $thread->setStatus(ThreadState::AUDIT_PASS);
+
+        $visitStat = new VisitStat();
+        $visitStat->setThread($thread);
+        $visitStat->setLikeTotal(1); // 很少的点赞数
+        $visitStat->setLikeRank(5); // 有初始排名
+
+        self::getEntityManager()->persist($thread);
+        self::getEntityManager()->persist($visitStat);
+        self::getEntityManager()->flush();
+
+        // 验证初始排名
+        $this->assertSame(5, $visitStat->getLikeRank());
+
+        // 执行命令
+        $this->commandTester->execute([]);
+
+        $this->assertSame(0, $this->commandTester->getStatusCode());
+
+        // 刷新实体以获取最新状态
+        self::getEntityManager()->refresh($visitStat);
+
+        // 由于点赞数很低，可能不会被排进前列，但排名应该被重新计算
+        // 我们只验证排名确实被重新设置了（不是原来的5）
+        $this->assertNotSame(5, $visitStat->getLikeRank());
     }
 
     public function testCommandShouldHaveCorrectName(): void

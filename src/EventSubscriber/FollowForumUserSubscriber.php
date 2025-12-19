@@ -13,7 +13,7 @@ use Tourze\UserFollowBundle\Event\AfterFollowUser;
  * 关注用户
  */
 #[WithMonologChannel(channel: 'forum')]
-readonly class FollowForumUserSubscriber
+final readonly class FollowForumUserSubscriber
 {
     public function __construct(
         private LoggerInterface $logger,

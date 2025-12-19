@@ -16,7 +16,7 @@ use Tourze\Symfony\CronJob\Attribute\AsCronTask;
 
 #[AsCronTask(expression: '* * * * *')]
 #[AsCommand(name: self::NAME, description: '自动上架帖子')]
-class AutoReleaseThreadCommand extends LockableCommand
+final class AutoReleaseThreadCommand extends LockableCommand
 {
     public const NAME = 'forum:auto-release-thread';
 

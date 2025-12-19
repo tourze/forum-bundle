@@ -21,7 +21,6 @@ class MessageNotificationFixtures extends Fixture implements FixtureGroupInterfa
         return ['forum'];
     }
 
-
     public function load(ObjectManager $manager): void
     {
         // 使用 loadUserByIdentifier 方法来获取用户，使用确定存在的用户

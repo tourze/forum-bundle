@@ -64,12 +64,8 @@ final class ForumDimensionCrudControllerTest extends AbstractEasyAdminController
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
-        yield 'name' => ['name'];
-        yield 'key' => ['key'];
-        yield 'weight' => ['weight'];
+        yield 'title' => ['title'];
+        yield 'code' => ['code'];
         yield 'valid' => ['valid'];
     }
 
@@ -79,7 +75,7 @@ final class ForumDimensionCrudControllerTest extends AbstractEasyAdminController
     public static function provideEditPageFields(): iterable
     {
         yield 'title_field' => ['title'];
-        yield 'content_field' => ['content'];
-        yield 'status_field' => ['status'];
+        yield 'code_field' => ['code'];
+        yield 'valid_field' => ['valid'];
     }
 }

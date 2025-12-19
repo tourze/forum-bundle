@@ -66,14 +66,13 @@ final class ForumThreadCrudControllerTest extends AbstractEasyAdminControllerTes
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
+        yield 'id' => ['id'];
         yield 'title' => ['title'];
-        yield 'content' => ['content'];
+        yield 'user' => ['user'];
         yield 'status' => ['status'];
         yield 'type' => ['type'];
-        yield 'channels' => ['channels'];
+        yield 'content' => ['content'];
+        yield 'identify' => ['identify'];
     }
 
     /**
@@ -81,9 +80,13 @@ final class ForumThreadCrudControllerTest extends AbstractEasyAdminControllerTes
      */
     public static function provideEditPageFields(): iterable
     {
-        yield 'title_field' => ['title'];
-        yield 'content_field' => ['content'];
-        yield 'status_field' => ['status'];
+        yield 'id' => ['id'];
+        yield 'title' => ['title'];
+        yield 'user' => ['user'];
+        yield 'status' => ['status'];
+        yield 'type' => ['type'];
+        yield 'content' => ['content'];
+        yield 'identify' => ['identify'];
     }
 
     #[Test]

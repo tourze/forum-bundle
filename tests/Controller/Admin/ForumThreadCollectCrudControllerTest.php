@@ -40,6 +40,17 @@ final class ForumThreadCollectCrudControllerTest extends AbstractEasyAdminContro
     }
 
     /**
+     * 加载测试数据
+     * 注意：ThreadCollect 的 user 字段是 NOT NULL（nullable: false），
+     * 且需要关联 UserInterface 实体。由于测试环境无法正确创建 UserInterface 实体，
+     * 因此无法创建测试数据，部分测试将会失败。
+     */
+    protected function afterEasyAdminSetUp(): void
+    {
+        // 无法创建测试数据，因为 user 字段 NOT NULL 且需要有效的 UserInterface 实体
+    }
+
+    /**
      * @return ForumThreadCollectCrudController
      */
     protected function getControllerService(): AbstractCrudController
@@ -53,8 +64,9 @@ final class ForumThreadCollectCrudControllerTest extends AbstractEasyAdminContro
     public static function provideIndexPageHeaders(): iterable
     {
         yield 'id' => ['ID'];
-        yield 'thread' => ['帖子'];
-        yield 'user' => ['用户'];
+        yield 'thread' => ['关联帖子'];
+        yield 'user' => ['收藏用户'];
+        yield 'valid' => ['是否有效'];
         yield 'created_at' => ['创建时间'];
     }
 
@@ -63,11 +75,9 @@ final class ForumThreadCollectCrudControllerTest extends AbstractEasyAdminContro
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
         yield 'thread' => ['thread'];
         yield 'user' => ['user'];
+        yield 'valid' => ['valid'];
     }
 
     /**
@@ -75,8 +85,8 @@ final class ForumThreadCollectCrudControllerTest extends AbstractEasyAdminContro
      */
     public static function provideEditPageFields(): iterable
     {
-        yield 'title_field' => ['title'];
-        yield 'content_field' => ['content'];
-        yield 'status_field' => ['status'];
+        yield 'thread_field' => ['thread'];
+        yield 'user_field' => ['user'];
+        yield 'valid_field' => ['valid'];
     }
 }

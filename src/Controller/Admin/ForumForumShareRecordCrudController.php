@@ -3,6 +3,8 @@
 namespace ForumBundle\Controller\Admin;
 
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminCrud;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -39,6 +41,15 @@ final class ForumForumShareRecordCrudController extends AbstractCrudController
         ];
     }
 
+    public function configureActions(Actions $actions): Actions
+    {
+        // ForumShareRecord 是只读实体，禁用新建、编辑、删除操作
+        return $actions
+            ->disable(Action::NEW, Action::EDIT, Action::DELETE)
+            ->add(Crud::PAGE_INDEX, Action::DETAIL)
+        ;
+    }
+
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
@@ -55,9 +66,10 @@ final class ForumForumShareRecordCrudController extends AbstractCrudController
             ->setEntityLabelInSingular('分享记录')
             ->setEntityLabelInPlural('分享记录')
             ->setPageTitle('index', '分享记录列表')
-            ->setPageTitle('new', '创建分享记录')
-            ->setPageTitle('edit', '编辑分享记录')
             ->setPageTitle('detail', '分享记录详情')
+            // 由于实体标记为 readOnly: true，只支持查看操作
+            ->showEntityActionsInlined()
+            ->setEntityPermission('ROLE_ADMIN')
         ;
     }
 }

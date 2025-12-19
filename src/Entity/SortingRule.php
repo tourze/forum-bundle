@@ -16,9 +16,17 @@ use Tourze\DoctrineUserBundle\Traits\BlameableAware;
 #[ORM\Entity(repositoryClass: SortingRuleRepository::class)]
 class SortingRule implements \Stringable
 {
-    use SnowflakeKeyAware;
+    use SnowflakeKeyAware {
+        getId as public snowflakeGetId;
+    }
     use TimestampableAware;
     use BlameableAware;
+
+    #[Groups(groups: ['admin_curd'])]
+    public function getId(): ?string
+    {
+        return $this->snowflakeGetId();
+    }
 
     #[Assert\NotBlank]
     #[Assert\Length(max: 100)]

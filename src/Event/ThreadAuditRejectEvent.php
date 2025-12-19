@@ -5,7 +5,7 @@ namespace ForumBundle\Event;
 use ForumBundle\Entity\Thread;
 use Tourze\UserEventBundle\Event\UserInteractionEvent;
 
-class ThreadAuditRejectEvent extends UserInteractionEvent
+final class ThreadAuditRejectEvent extends UserInteractionEvent
 {
     /**
      * @var array<string, mixed>

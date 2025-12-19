@@ -11,7 +11,7 @@ use Tourze\PHPUnitSymfonyKernelTest\Attribute\AsRepository;
  * @extends ServiceEntityRepository<ThreadMedia>
  */
 #[AsRepository(entityClass: ThreadMedia::class)]
-class ThreadMediaRepository extends ServiceEntityRepository
+final class ThreadMediaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

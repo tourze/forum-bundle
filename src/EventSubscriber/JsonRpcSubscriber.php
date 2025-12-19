@@ -8,7 +8,7 @@ use WechatMiniProgramAuthBundle\Event\CodeToSessionResponseEvent;
 /**
  * 处理登录
  */
-class JsonRpcSubscriber
+final class JsonRpcSubscriber
 {
     #[AsEventListener]
     public function onCodeToSessionResponseEvent(CodeToSessionResponseEvent $event): void

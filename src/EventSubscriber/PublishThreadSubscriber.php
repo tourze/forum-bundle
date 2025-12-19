@@ -13,7 +13,7 @@ use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
  * 处理发布帖子事件
  */
 #[WithMonologChannel(channel: 'forum')]
-readonly class PublishThreadSubscriber
+final readonly class PublishThreadSubscriber
 {
     public function __construct(
         private LoggerInterface $logger,

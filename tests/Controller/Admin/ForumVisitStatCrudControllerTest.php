@@ -68,9 +68,7 @@ final class ForumVisitStatCrudControllerTest extends AbstractEasyAdminController
      */
     public static function provideNewPageFields(): iterable
     {
-        yield 'instance_id' => ['instanceId'];
-        yield 'email' => ['email'];
-        yield 'password' => ['password'];
+        yield 'id' => ['id'];
         yield 'thread' => ['thread'];
         yield 'like_total' => ['likeTotal'];
         yield 'share_total' => ['shareTotal'];
@@ -89,8 +87,17 @@ final class ForumVisitStatCrudControllerTest extends AbstractEasyAdminController
      */
     public static function provideEditPageFields(): iterable
     {
-        yield 'title_field' => ['title'];
-        yield 'content_field' => ['content'];
-        yield 'status_field' => ['status'];
+        yield 'id' => ['id'];
+        yield 'thread' => ['thread'];
+        yield 'like_total' => ['likeTotal'];
+        yield 'share_total' => ['shareTotal'];
+        yield 'comment_total' => ['commentTotal'];
+        yield 'visit_total' => ['visitTotal'];
+        yield 'collect_count' => ['collectCount'];
+        yield 'like_rank' => ['likeRank'];
+        yield 'share_rank' => ['shareRank'];
+        yield 'comment_rank' => ['commentRank'];
+        yield 'visit_rank' => ['visitRank'];
+        yield 'collect_rank' => ['collectRank'];
     }
 }

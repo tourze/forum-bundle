@@ -4,7 +4,7 @@ namespace ForumBundle\Message;
 
 use Tourze\AsyncContracts\AsyncMessageInterface;
 
-class SaveShareRecordMessage implements AsyncMessageInterface
+final class SaveShareRecordMessage implements AsyncMessageInterface
 {
     private string $threadId;
 

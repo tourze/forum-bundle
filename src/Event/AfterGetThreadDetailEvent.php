@@ -5,7 +5,7 @@ namespace ForumBundle\Event;
 use ForumBundle\Entity\Thread;
 use Symfony\Contracts\EventDispatcher\Event;
 
-class AfterGetThreadDetailEvent extends Event
+final class AfterGetThreadDetailEvent extends Event
 {
     /**
      * @var array<string, mixed>

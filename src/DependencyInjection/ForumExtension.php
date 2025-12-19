@@ -4,7 +4,7 @@ namespace ForumBundle\DependencyInjection;
 
 use Tourze\SymfonyDependencyServiceLoader\AutoExtension;
 
-class ForumExtension extends AutoExtension
+final class ForumExtension extends AutoExtension
 {
     protected function getConfigDir(): string
     {

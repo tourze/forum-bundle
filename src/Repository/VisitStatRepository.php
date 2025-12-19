@@ -11,7 +11,7 @@ use Tourze\PHPUnitSymfonyKernelTest\Attribute\AsRepository;
  * @extends ServiceEntityRepository<VisitStat>
  */
 #[AsRepository(entityClass: VisitStat::class)]
-class VisitStatRepository extends ServiceEntityRepository
+final class VisitStatRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {

@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(name: self::NAME, description: '统计帖子的指标')]
-class UpdateThreadVisitStatCommand extends Command
+final class UpdateThreadVisitStatCommand extends Command
 {
     public const NAME = 'forum:update-thread-visit-stat';
 
@@ -25,9 +25,10 @@ class UpdateThreadVisitStatCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var list<Thread> $threads */
-        $threads = $this->threadRepository->createQueryBuilder('a')
-            ->where('a.visitStat IS NULL')
-            ->orderBy('a.id', 'DESC')
+        $threads = $this->threadRepository->createQueryBuilder('t')
+            ->leftJoin('t.visitStat', 'vs')
+            ->where('vs.id IS NULL')
+            ->orderBy('t.id', 'DESC')
             ->getQuery()
             ->setMaxResults(500)
             ->getResult()

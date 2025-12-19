@@ -16,7 +16,7 @@ use Tourze\Symfony\CronJob\Attribute\AsCronTask;
 
 #[AsCronTask(expression: '* * * * *')]
 #[AsCommand(name: self::NAME, description: '自动下架帖子')]
-class AutoTakeDownThreadCommand extends LockableCommand
+final class AutoTakeDownThreadCommand extends LockableCommand
 {
     public const NAME = 'forum:auto-take-down-thread';
 
