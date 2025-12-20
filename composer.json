@@ -39,7 +39,7 @@
     "tourze/arrayable": "1.*",
     "tourze/async-contracts": "1.0.*",
     "tourze/bundle-dependency": "1.*",
-    "tourze/catalog-bundle": "1.0.*",
+    "tourze/catalog-bundle": "2.0.*",
     "tourze/doctrine-entity-lock-bundle": "1.0.*",
     "tourze/doctrine-indexed-bundle": "1.0.*",
     "tourze/doctrine-ip-bundle": "1.1.*",
