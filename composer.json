@@ -59,7 +59,7 @@
     "tourze/symfony-aop-bundle": "1.0.*",
     "tourze/symfony-cron-job-bundle": "1.1.*",
     "tourze/symfony-ecol-bundle": "1.0.*",
-    "tourze/symfony-lock-command-bundle": "1.0.*",
+    "tourze/symfony-lock-command-bundle": "1.1.*",
     "tourze/symfony-routing-auto-loader-bundle": "1.0.*",
     "tourze/user-event-bundle": "1.0.*",
     "tourze/user-follow-bundle": "0.0.*",
